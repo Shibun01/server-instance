@@ -1,0 +1,18 @@
+import { Router } from "express";
+import { ShopValidationRules, validate } from "../validators/shopsValidator.js";
+import { createCoffeeShop, getAllCoffeeShops } from "../controllers/shops.controller.js";
+
+
+const router = Router();
+
+router.route('/create').post(
+    ShopValidationRules(),
+    validate,
+    createCoffeeShop
+)
+
+router.route('/getAll').get(
+    getAllCoffeeShops
+)
+
+export default router;
