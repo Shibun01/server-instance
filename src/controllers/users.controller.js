@@ -6,10 +6,10 @@
 
     const registerUser = AsyncHandler(async (req, res, next) => {
         try {
-            const { username, email, password } = req.body;
+            const { name, email, password } = req.body;
 
             const dataObj = {
-                username,
+                name,
                 email,
                 password
             }
@@ -28,24 +28,23 @@
 
     const loginUser = AsyncHandler(async (req, res, next) => {
         try {
-            const {email, password} = req.body;
-            const dataObj = {
-                email, 
-                password
-            }
+            const { email, password } = req.body;
+            const dataObj = { email, password };
             
             const login = await userService.loginFromDatabase(dataObj);
-            if(login){
-                return res.status(200).json(
-                    new ApiResponse(200,  "User logged in successfully!!!", { user: login.user,token: login.token })
-                );
-            }
-
+            return res.status(200).json(
+                new ApiResponse(200, "User logged in successfully!!!", { id: login.user_id, token: login.token })
+            );
         } catch (error) {
             console.error("Error in Logging User:", error);
+            
+            if (error instanceof ApiError) {
+                return next(error);
+            }
+            
             next(new ApiError(500, "Internal Server Error"));
         }
-    })
+    });
 
     export {
         registerUser,

@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import authenticateToken from "./middlewares/auth.js";
+import errorHandler from "./middlewares/errorHandlers.js";
 
 
 
@@ -19,6 +20,8 @@ app.get("/", (_, res) => {
     res.status(200).json({ message: "home" })
 })
 
+
+
 app.use(authenticateToken)
 
 
@@ -36,5 +39,6 @@ app.use("/api/v1/review/", reviewRouter)
 app.use("/api/v1/favorite/", favoriteRouter)
 
 
+app.use(errorHandler);
 
 export { app };

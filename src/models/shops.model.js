@@ -7,6 +7,7 @@ const shopSchema = new mongoose.Schema({
     longitude: { type: Number, required: true }
   },
   rating: { type: Number },
+  rating_number: {type: Number},
   description: { type: String },
   images: [{ type: String }],
   created_at: { type: Date, default: Date.now },

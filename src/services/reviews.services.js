@@ -8,6 +8,6 @@ export const saveDataToDatabase = async (data) => {
      shop_id: data.shop_id,
      user_id: data.user_id,
      rating: data.rating,
-     comment: data.comment
+     rating_number: data.rating_number
    })
 }

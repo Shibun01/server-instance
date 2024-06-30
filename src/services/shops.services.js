@@ -6,6 +6,7 @@ export const saveDataToDatabase = async (data) => {
         name: data.name,
         location: data.location,
         rating: data.rating,
+        rating_number: data.rating_number,
         description: data.description,
         images: data.images
     });
@@ -14,4 +15,8 @@ export const saveDataToDatabase = async (data) => {
 
 export const getAllDataFromDatabase = async() => {
     return coffeeShopDataModel.find();
+}
+
+export const getShopByID = async (_id) => {
+    return coffeeShopDataModel.find({ _id: _id });
 }

@@ -5,7 +5,7 @@ const ReviewValidationRules = () => {
     body('shop_id').notEmpty().withMessage('Shop ID is required').isMongoId().withMessage('Shop ID must be a valid MongoDB ObjectId'),
     body('user_id').notEmpty().withMessage('User ID is required').isMongoId().withMessage('User ID must be a valid MongoDB ObjectId'),
     body('rating').notEmpty().withMessage('Rating is required').isFloat({ min: 0, max: 5 }).withMessage('Rating must be between 0 and 5'),
-    body('comment').optional().isString().withMessage('Comment must be a string'),
+    body('rating_number').optional().isNumeric().withMessage('Rating number must be a valid number'),
     body('created_at').optional().isISO8601().withMessage('Created at must be a valid date'),
     body('updated_at').optional().isISO8601().withMessage('Updated at must be a valid date')
   ];
