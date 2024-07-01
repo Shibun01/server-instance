@@ -33,7 +33,7 @@
             
             const login = await userService.loginFromDatabase(dataObj);
             return res.status(200).json(
-                new ApiResponse(200, "User logged in successfully!!!", { id: login.user_id, token: login.token })
+                new ApiResponse(200, "User logged in successfully!!!", { user: login.user, token: login.token })
             );
         } catch (error) {
             console.error("Error in Logging User:", error);
