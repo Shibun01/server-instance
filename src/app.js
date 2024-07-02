@@ -7,7 +7,10 @@ import errorHandler from "./middlewares/errorHandlers.js";
 
 const app = express();
 app.use(express.json());
-app.use(cors({ credentials: true }))
+app.use(cors({
+    origin: "http://coffee-shop-637368184.ap-south-1.elb.amazonaws.com",
+    credentials: true
+}));
 app.use(express.json({
     limit: "50mb",
 }));
