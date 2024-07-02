@@ -17,6 +17,10 @@ const createCoffeeShop = AsyncHandler(async (req, res, next) => {
         }
     } catch (error) {
         console.error("Error in creating Coffee Shop:", error);
+        if (error instanceof ApiError) {
+            return next(error);
+        }
+        
         next(new ApiError(500, "Internal Server Error"));
     }
 });
@@ -32,6 +36,10 @@ const getAllCoffeeShops = AsyncHandler(async (req, res, next) => {
         }
     } catch (error) {
         console.error("Error in getting the Coffee Shop:", error);
+        if (error instanceof ApiError) {
+            return next(error);
+        }
+        
         next(new ApiError(500, "Internal Server Error"));
     }
 })
@@ -48,6 +56,10 @@ const getCoffeeShopsByID = AsyncHandler(async (req, res, next) => {
 
     } catch (error) {
         console.error("Error in getting the Coffee Shop:", error);
+        if (error instanceof ApiError) {
+            return next(error);
+        }
+        
         next(new ApiError(500, "Internal Server Error"));
     }
 })

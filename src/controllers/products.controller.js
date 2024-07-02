@@ -18,7 +18,11 @@ const createCoffeeShopProduct = AsyncHandler(async (req, res, next) => {
         }
     } catch (error) {
         console.error("Error creating a product: ", error);
-        next(new ApiError(500, "Internal Server Error"))
+        if (error instanceof ApiError) {
+            return next(error);
+        }
+        
+        next(new ApiError(500, "Internal Server Error"));
     }
 })
 
@@ -34,7 +38,11 @@ const getProductByShopID = AsyncHandler(async (req, res, next) => {
         }
     } catch (error) {
         console.error("Error getting the product");
-        next(new ApiError(500, "Internal Server Error"))
+        if (error instanceof ApiError) {
+            return next(error);
+        }
+        
+        next(new ApiError(500, "Internal Server Error"));
     }
 })
 

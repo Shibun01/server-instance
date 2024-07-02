@@ -5,14 +5,22 @@ import jwt from 'jsonwebtoken';
 
 
 
+
 export const saveDataToDatabase = async (data) => {
+    const existingUser = await userDataModel.findOne({ email: data.email });
+    if (existingUser) {
+        console.log('Email address already registered');
+        throw new ApiError(400, "Email already registered");
+    }
     const passwordHash = await bcrypt.hash(data.password, 10);
+
     return userDataModel.create({
         name: data.name,
         email: data.email,
         password: passwordHash
-    })
+    });
 };
+
 
 
 export const loginFromDatabase = async (data) => {

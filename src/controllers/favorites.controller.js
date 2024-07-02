@@ -16,7 +16,11 @@ const createFavorites = AsyncHandler(async (req, res, next) => {
         }
     } catch (error) {
         console.error("Error in storing favorite:", error);
-        next(new ApiError(500, "Internal Server Error"))
+        if (error instanceof ApiError) {
+            return next(error);
+        }
+        
+        next(new ApiError(500, "Internal Server Error"));
     }
 })
 

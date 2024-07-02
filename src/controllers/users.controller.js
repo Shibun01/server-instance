@@ -15,13 +15,15 @@
             }
 
             const createUser = await userService.saveDataToDatabase(dataObj);
-            if (createUser) {
                 return res.status(200).json(
                     new ApiResponse(200, "User registered successfully!!!", createUser)
                 )
-            }
         } catch (error) {
             console.error("Error in registerUser:", error);
+            if (error instanceof ApiError) {
+                return next(error);
+            }
+            
             next(new ApiError(500, "Internal Server Error"));
         }
     });
