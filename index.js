@@ -1,5 +1,5 @@
-import { app } from "./app.js";
-import connectToDatabase from "./db/index.js";
+import { app } from "./src/app.js";
+import connectToDatabase from "./src/db/index.js";
 import dotenv from "dotenv";
 
 
