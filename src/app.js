@@ -23,7 +23,7 @@ app.use(
   );
 
   const allowedOrigins = [
-    "http://coffee-shop-637368184.ap-south-1.elb.amazonaws.com",
+    "https://brewscout.onrender.com",
     "http://localhost:3000",
   ]
 app.use(express.json({
