@@ -16,7 +16,7 @@ RUN npm install
 COPY . .
 
 
-ENV MONGODB_URI='mongodb+srv://Shibun:Shibun6371@mongo-db.eorrjea.mongodb.net'
+ENV MONGODB_URI='mongodb+srv://Shibun:Shibun7459@mongo-db.eorrjea.mongodb.net'
 ENV CORS_ORIGIN='*'
 ENV PORT=8000
 ENV JWT_SECRET='test123'
